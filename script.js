@@ -3,7 +3,7 @@ $(document).ready(function () {
         var nString = $('.N').val();
 
         //ellenőrizzük, hogy a megadott érték érvényes szám-e (3 és 6 között)
-        if (isNaN(nString) || Number(nString) < 3 || Number(nString) > 6) {
+        if (!(nString) || Number(nString) < 3 || Number(nString) > 6) {
             return;
         }
 
