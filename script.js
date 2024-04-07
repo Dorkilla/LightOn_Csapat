@@ -23,7 +23,7 @@ $(document).ready(function () {
 
         //körök létrehozása
         for (var i = 0; i < n; i++) {
-            for (var k = 0; j < n; k++) {
+            for (var k = 0; k < n; k++) {
                 var korDiv = $('<div></div>').addClass('kor'); //létrehozzuk a köröket
                 var randomSzam = Math.floor(Math.random() * 2); //véletlenszerű szám 0-1 között
                 if (randomSzam === 0) {
