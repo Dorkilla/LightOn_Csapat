@@ -37,7 +37,7 @@ $(document).ready(function () {
         }
 
         //színek hozzáadása
-        for (var k = 0; k < n * n; k++) {
+        for (var sz = 0; sz < n * n; sz++) {
             var szinDiv = $('<div></div>').addClass('szin'); //létrehhozuk a színeket
             szinekDiv.append(szinDiv); //hozzáadjuk a színeket
         }
