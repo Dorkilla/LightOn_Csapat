@@ -1,0 +1,33 @@
+* {
+    font-family: Times, serif;
+    font-size: large;
+}
+
+main {
+    width: 80%;
+    text-align: center;
+    border-radius: 30px;
+    background-color: #8BBEE8FF;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.fooldal {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /*oldal teljes magassága */
+}
+
+.korok {
+    display: grid; 
+    grid-template-columns: repeat(3, auto); /*alapértelmezett 3x3-as méret*/
+    grid-gap: 10px; 
+    justify-content: center; 
+}
+
+.kor {
+    width: 50px;
+    height: 50px; 
+    border-radius: 50%;
+}

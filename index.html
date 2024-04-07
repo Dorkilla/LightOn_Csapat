@@ -1,27 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Light On</title>
+    <title>Kocsi Dorottya, Csorba Eszter</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script type="module" src="script.js"></script>
+    <link rel="stylesheet" href="style.css">
 </head>
-<body>
-    <div class="cim">
-        <h1>Light On játék</h1>
-    </div>
-    <div class="gomb">
-        <button>Új játék</button>
-    </div>
 
-    <div class="korok"></div>
-    <div class="szinek"></div>
-    
-    <div class="leiras">
-        <p>Kapcsold le a lehető legtöbb lámpát!(Legyen az összes lila!)</p>
-    </div>
-    <div class="szamlalo">
-        <p>A lekapcsolt lámpák száma:</p>
+<body>
+    <div class="fooldal">
+        <main>
+            <h1>Light On játék</h1>
+            <h2>Válasszon méretet:</h2>
+
+            <div class="gomb">
+                <input type="number" class="N" min="3" max="6">
+                <input type="button" class="kezdogomb" value="Játék">
+            </div>
+
+            <div class="korok"></div>
+            <div class="szinek"></div>
+
+            <div class="leiras">
+                <p>Kapcsold le a lehető legtöbb lámpát!(Legyen az összes lila!)</p>
+            </div>
+            <div class="szamlalo">
+                <p>A lekapcsolt lámpák száma:</p>
+            </div>
+        </main>
     </div>
 </body>
 <footer>Csorba Eszter, Kocsi Dorottya</footer>
+
 </html>
