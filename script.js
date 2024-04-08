@@ -1,4 +1,8 @@
 $(document).ready(function () {
+
+    const korokDiv = $('.korok');
+
+
     $('.kezdogomb').click(function () {  //lekérjük az N elem értékét
         var nString = $('.N').val();
 
@@ -11,7 +15,7 @@ $(document).ready(function () {
         var n = Number(nString);
 
         //változók létrehozása, beszúrása
-        const korokDiv = $('.korok');
+        
         var szinekDiv = $('.szinek');
         var szamlaloDiv = $('.szamlalo');
 
@@ -36,7 +40,7 @@ $(document).ready(function () {
             }
            
         }
-
+        
         //színek hozzáadása
         for (var sz = 0; sz < n * n; sz++) {
             var szinDiv = $('<div></div>').addClass('szin'); //létrehhozuk a színeket
@@ -49,31 +53,37 @@ $(document).ready(function () {
         //lekapcsolt lámpák megjelenítése
         szamlaloDiv.text("A lekapcsolt lámpák száma: " + lekapcsoltLampakSzama); 
     
-        return korokDiv;
+        return [korokDiv, randomSzam];
     });
 
+    //console.log(korokDiv);
 
    
 
-    korokDiv.on("click", function () {
+    korokDiv.on("click", function (event) {
 
         console.log('KLIKK');
-        /*
+        
         for (let index = 0; index < korokDiv.length; index++) {
-            
+                /*if (randomSzam[index] === 0){
+                    randomSzam[index] = 1;
+                }else if( randomSzam[index] === 1){
+                    randomSzam[index] = 0;
+                }*/
+                //
 
-                if (randomSzam[i] === 0){
-                    randomSzam[i] = 1;
-                }else if( randomSzam[i] === 1){
-                    randomSzam[i] = 0;
+                if (korokDiv.css('background-color')[index] === '#A8D5BAFF'){
+                    korokDiv.css('background-color')[index] = '#D7A9E3FF';
+                }else if (korokDiv.css('background-color')[index] === '#D7A9E3FF'){
+                    korokDiv.css('background-color')[index] = '#A8D5BAFF';
                 }
-
             
+                console.log(korokDiv.css('background-color')[index]);
 
           
             
         };
-        */
+        
 
     });
     
