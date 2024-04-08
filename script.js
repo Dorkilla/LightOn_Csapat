@@ -11,7 +11,7 @@ $(document).ready(function () {
         var n = Number(nString);
 
         //változók létrehozása, beszúrása
-        var korokDiv = $('.korok');
+        const korokDiv = $('.korok');
         var szinekDiv = $('.szinek');
         var szamlaloDiv = $('.szamlalo');
 
@@ -34,6 +34,7 @@ $(document).ready(function () {
                 }
                 korokDiv.append(korDiv); //hozzáadjuk a köröket
             }
+           
         }
 
         //színek hozzáadása
@@ -47,5 +48,37 @@ $(document).ready(function () {
 
         //lekapcsolt lámpák megjelenítése
         szamlaloDiv.text("A lekapcsolt lámpák száma: " + lekapcsoltLampakSzama); 
+    
+        return korokDiv;
     });
+
+
+   
+
+    korokDiv.on("click", function () {
+
+        console.log('KLIKK');
+        /*
+        for (let index = 0; index < korokDiv.length; index++) {
+            
+
+                if (randomSzam[i] === 0){
+                    randomSzam[i] = 1;
+                }else if( randomSzam[i] === 1){
+                    randomSzam[i] = 0;
+                }
+
+            
+
+          
+            
+        };
+        */
+
+    });
+    
+    
+    
+
+
 });
