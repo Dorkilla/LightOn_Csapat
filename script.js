@@ -1,84 +1,67 @@
 $(document).ready(function () {
-    $('.kezdogomb').click(function () {  //lekérjük az N elem értékét
-        var nString = $('.N').val();
+    const korokDiv = $('.korok');
+    let N; // N változó deklarálása
+    let lilaLampakSzama; // Lila lámpák számának tárolása
 
-        //ellenőrizzük, hogy a megadott érték érvényes szám-e (3 és 6 között)
+    function korokLetrehozasa(n) {
+        korokDiv.empty();
+        lilaLampakSzama = 0;
+
+        for (let i = 0; i < n; i++) {
+            for (let k = 0; k < n; k++) {
+                const korDiv = $('<div></div>').addClass('kor');
+                const randomSzam = Math.floor(Math.random() * 2);
+                if (randomSzam === 0) {
+                    korDiv.css('background-color', '#A8D5BA');
+                } else {
+                    korDiv.css('background-color', '#D7A9E3');
+                    lilaLampakSzama++;
+                }
+                korokDiv.append(korDiv);
+            }
+        }
+        korokDiv.on('click', '.kor', szomszedosOldalakValtoztatasa);
+
+        aktualisSzamlalo(); //Frissítjük a számlálót
+    }
+
+    function aktualisSzamlalo() {
+        $('.szamlalo').text("A lila lámpák száma: " + lilaLampakSzama);
+    }
+
+    function szomszedosOldalakValtoztatasa(event) {
+        const aktuálisElem = $(event.target);
+        const id = Number(aktuálisElem.attr('id'));
+        const aktuálisSzín = aktuálisElem.css('background-color');
+        let újSzín;
+
+        //Változtatjuk a színt
+        if (aktuálisSzín === 'rgb(215, 169, 227)' || aktuálisSzín === 'rgba(215, 169, 227, 1)') {
+            újSzín = '#A8D5BA'; //Ha lila, akkor zöldre vált
+            lilaLampakSzama--; //Csökkentjük a lila lámpák számát
+        } else {
+            újSzín = '#D7A9E3'; //Ellenkező esetben lilára vált
+            lilaLampakSzama++; //Növeljük a lila lámpák számát
+        }
+
+        // Színek beállítása
+        aktuálisElem.css('background-color', újSzín); //Az aktuális elem színe
+        $('#' + (id - 1)).css('background-color', újSzín); //Baloldali elem színe
+        $('#' + (id + 1)).css('background-color', újSzín); //Jobboldali elem színe
+        $('#' + (id - N)).css('background-color', újSzín); //Felső elem színe
+        $('#' + (id + N)).css('background-color', újSzín); //Alsó elem színe
+
+        aktualisSzamlalo(); //Frissítjük a számlálót
+    }
+
+    $('.kezdogomb').click(function () {
+        const nString = $('.N').val();
+
         if (!(nString) || Number(nString) < 3 || Number(nString) > 6) {
             return;
         }
-
-        // A stringből számra konvertáljuk
-        var n = Number(nString);
-
-        //változók létrehozása, beszúrása
-        const korokDiv = $('.korok');
-        var szinekDiv = $('.szinek');
-        var szamlaloDiv = $('.szamlalo');
-
-        var lekapcsoltLampakSzama = 0;
-
-        //előző körök törlése
-        korokDiv.empty();
-        szinekDiv.empty();
-
-        //körök létrehozása
-        for (var i = 0; i < n; i++) {
-            for (var k = 0; k < n; k++) {
-                var korDiv = $('<div></div>').addClass('kor'); //létrehozzuk a köröket
-                var randomSzam = Math.floor(Math.random() * 2); //véletlenszerű szám 0-1 között
-                if (randomSzam === 0) {
-                    korDiv.css('background-color', '#A8D5BAFF'); //ha 0, zöld szín
-                } else {
-                    korDiv.css('background-color', '#D7A9E3FF'); //ha 1, lila szín
-                    lekapcsoltLampakSzama++; //lila kör esetén növeljük a lekapcsolt lámpák számát
-                }
-                korokDiv.append(korDiv); //hozzáadjuk a köröket
-            }
-           
-        }
-
-        //színek hozzáadása
-        for (var sz = 0; sz < n * n; sz++) {
-            var szinDiv = $('<div></div>').addClass('szin'); //létrehhozuk a színeket
-            szinekDiv.append(szinDiv); //hozzáadjuk a színeket
-        }
-
-        //méret változtatása, felhasználótól függően
-        korokDiv.css('grid-template-columns', 'repeat(' + n + ', auto)');
-
-        //lekapcsolt lámpák megjelenítése
-        szamlaloDiv.text("A lekapcsolt lámpák száma: " + lekapcsoltLampakSzama); 
-    
-        return korokDiv;
+        N = Number(nString); //Az N változó értékadása
+        korokLetrehozasa(N);
+        korokDiv.css('grid-template-columns', 'repeat(' + N + ', auto)');
     });
-
-
-   
-
-    korokDiv.on("click", function () {
-
-        console.log('KLIKK');
-        /*
-        for (let index = 0; index < korokDiv.length; index++) {
-            
-
-                if (randomSzam[i] === 0){
-                    randomSzam[i] = 1;
-                }else if( randomSzam[i] === 1){
-                    randomSzam[i] = 0;
-                }
-
-            
-
-          
-            
-        };
-        */
-
-    });
-    
-    
-    
-
-
 });
