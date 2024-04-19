@@ -36,7 +36,7 @@ $(document).ready(function () {
         let újSzín;
 
         //Változtatjuk a színt
-        if (aktuálisSzín === 'rgb(215, 169, 227)' || aktuálisSzín === 'rgba(215, 169, 227, 1)') {
+        if (aktuálisSzín === 'rgb(215, 169, 227)' || aktuálisSzín === 'rgba(215, 169, 227)') {
             újSzín = '#A8D5BA'; //Ha lila, akkor zöldre vált
             lilaLampakSzama--; //Csökkentjük a lila lámpák számát
         } else {
